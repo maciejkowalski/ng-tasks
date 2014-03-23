@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    respond_with List.create(params[:list])
+    respond_with List.create(list_params)
   end
 
   def update
@@ -19,5 +19,11 @@ class ListsController < ApplicationController
 
   def destroy
     respond_with List.destroy(params[:id])
+  end
+
+  private
+
+  def list_params
+    params.require(:list).permit(:name)
   end
 end
