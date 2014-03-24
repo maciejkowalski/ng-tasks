@@ -22,5 +22,13 @@ this.MainCtrl = [
       $scope.lists.push(list);
       return $scope.newList = {};
     }
+
+    $scope.deleteList = function($index) {
+      if (confirm("Czy jesteś pewien że chcesz usunąć tą listę?")) {
+        $scope.lists[$index].$delete();
+        $scope.lists.splice($index, 1);
+      }
+    }
   }
 ]
+

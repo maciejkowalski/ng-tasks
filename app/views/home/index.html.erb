@@ -9,6 +9,7 @@
   <ul>
     <li ng-repeat="list in lists">
       {{list.name}}
+      <button class='btn btn-danger btn-small pull-right' ng-click='deleteList($index)'>×</button>
     </li>
   </ul>
 </div>
