@@ -6,10 +6,13 @@
     <input type='submit' value='Add'>
   </form>
 
-  <ul>
-    <li ng-repeat="list in lists">
-      {{list.name}}
+  <div class="row">
+    <div class="col-md-4" ng-repeat="list in lists">
+      <h2>{{list.name}}</h2>
+      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
       <button class='btn btn-danger btn-small pull-right' ng-click='deleteList($index)'>×</button>
-    </li>
-  </ul>
+      <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+
 </div>
