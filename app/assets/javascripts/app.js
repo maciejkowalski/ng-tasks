@@ -13,6 +13,12 @@ app.factory("List", [
   }
 ]);
 
+app.factory("Task", [
+  "$resource", function($resource) {
+    return $resource("/lists/:list_id/tasks/:id", {list_id: "@list_id", id: "@id"}, {update: {method: "PUT"}})
+  }
+]);
+
 this.MainCtrl = [
   "$scope", "List", function($scope, List) {
     $scope.lists = List.query();
