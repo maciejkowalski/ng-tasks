@@ -20,7 +20,7 @@ app.factory("Task", [
 ]);
 
 this.MainCtrl = [
-  "$scope", "List", function($scope, List) {
+  "$scope", "List", "Task", function($scope, List, Task) {
     $scope.lists = List.query();
 
     $scope.addList = function() {
@@ -34,6 +34,13 @@ this.MainCtrl = [
         $scope.lists[$index].$delete();
         $scope.lists.splice($index, 1);
       }
+    }
+
+    $scope.addTaskToList = function(newTask, list) {
+      newTask.list_id = list.id;
+      var task = Task.save(newTask);
+      list.tasks.push(task);
+      newTask = {};
     }
   }
 ]
