@@ -42,6 +42,10 @@ this.MainCtrl = [
       list.tasks.push(task);
       newTask = {};
     }
+
+    $scope.clickList = function() {
+      console.log('click list')
+    }
   }
 ]
 
