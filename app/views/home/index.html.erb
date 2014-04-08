@@ -13,6 +13,12 @@
     <div class="col-md-4" ng-repeat="list in lists">
       <h3 ng-click="clickList()">{{list.name}}</h3>
       <button class='btn btn-danger btn-small pull-right' ng-click='deleteList($index)'>×</button>
+
+      <form ng-submit='updateList(list)'>
+        <input type='text' ng-model="list.name">
+        <input type='submit' value='Update'>
+      </form>
+
       <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
 
       <div class="col-md-8" ng-repeat="task in list.tasks">

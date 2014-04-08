@@ -9,13 +9,13 @@ app.config([
 
 app.factory("List", [
   "$resource", function($resource) {
-    return $resource("lists/:id", {id: "@id"}, {update: {method: "PUT"}});
+    return $resource("lists/:id", {id: "@id"}, {update: {method: "PATCH"}});
   }
 ]);
 
 app.factory("Task", [
   "$resource", function($resource) {
-    return $resource("/lists/:list_id/tasks/:id", {list_id: "@list_id", id: "@id"}, {update: {method: "PUT"}})
+    return $resource("/lists/:list_id/tasks/:id", {list_id: "@list_id", id: "@id"}, {update: {method: "PATCH"}})
   }
 ]);
 
@@ -27,6 +27,10 @@ this.MainCtrl = [
       var list = List.save($scope.newList);
       $scope.lists.push(list);
       return $scope.newList = {};
+    }
+
+    $scope.updateList = function(list) {
+      List.update({id: list.id, list: {name: list.name}});
     }
 
     $scope.deleteList = function($index) {
