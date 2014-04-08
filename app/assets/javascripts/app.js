@@ -51,6 +51,10 @@ this.MainCtrl = [
       }
     }
 
+    $scope.updateTaskInList = function(task) {
+      Task.update(task);
+    }
+
     $scope.clickList = function() {
       console.log('click list')
     }

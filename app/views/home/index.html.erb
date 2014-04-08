@@ -18,6 +18,12 @@
       <div class="col-md-8" ng-repeat="task in list.tasks">
         {{task.name}}
         <button class='btn btn-danger btn-small pull-right' ng-click='deleteTaskFromList($index, task, list)'>×</button>
+        <br />
+
+        <form ng-submit='updateTaskInList(task)'>
+          <input type='text' ng-model="task.name">
+          <input type='submit' value='Update'>
+        </form>
 
       </div>
 
