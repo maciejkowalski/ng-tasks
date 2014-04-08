@@ -47,6 +47,7 @@ this.MainCtrl = [
       if (confirm("Czy jesteś pewien że chcesz usunąć ten task?")) {
         list.tasks.splice($index, 1);
         Task.delete({list_id: list.id, id: task.id});
+        // http://draptik.github.io/blog/2013/07/28/restful-crud-with-angularjs/
       }
     }
 
