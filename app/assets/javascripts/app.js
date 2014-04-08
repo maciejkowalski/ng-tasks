@@ -43,6 +43,13 @@ this.MainCtrl = [
       newTask = {};
     }
 
+    $scope.deleteTaskFromList = function($index, task, list) {
+      if (confirm("Czy jesteś pewien że chcesz usunąć ten task?")) {
+        list.tasks.splice($index, 1);
+        Task.delete({list_id: list.id, id: task.id});
+      }
+    }
+
     $scope.clickList = function() {
       console.log('click list')
     }
