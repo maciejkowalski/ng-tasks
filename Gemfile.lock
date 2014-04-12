@@ -28,6 +28,7 @@ GEM
     angularjs-rails (1.2.14)
     arel (4.0.2)
     atomic (1.1.16)
+    bcrypt-ruby (3.1.2)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -38,6 +39,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    devise (3.0.0)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -55,6 +61,7 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    orm_adapter (0.4.0)
     pg (0.17.1)
     polyglot (0.3.4)
     puma (2.8.0)
@@ -109,6 +116,8 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -117,6 +126,7 @@ DEPENDENCIES
   angularjs-rails
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  devise
   jbuilder (~> 1.2)
   jquery-rails
   pg
