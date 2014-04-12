@@ -1,6 +1,16 @@
 Masters::Application.routes.draw do
+
   devise_for :users
-  root to: "home#index"
+  as :user do
+    match 'sign_in' => "devise/sessions#new", as: :sign_in, via: [:get, :post]
+    unauthenticated do
+      root to: "devise/sessions#new"
+    end
+  end
+
+  authenticated :user do
+    root to: "home#index"
+  end
 
   resources :lists do
     resources :tasks
