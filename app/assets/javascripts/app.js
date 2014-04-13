@@ -1,4 +1,4 @@
-var app = angular.module("Masters", ["ngResource", 'mk.editablespan']);
+var app = angular.module("Masters", ["ngResource", 'ngRoute', 'mk.editablespan']);
 
 app.config([
   "$httpProvider", function($httpProvider) {
@@ -6,6 +6,14 @@ app.config([
     $httpProvider.defaults.headers.common['Accept'] = "application/json"
   }
 ]);
+
+app.config(function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode(true);
+  $routeProvider.when("/", {
+    controller: "MainCtrl"
+  });
+
+});
 
 app.factory("List", [
   "$resource", function($resource) {
@@ -18,6 +26,8 @@ app.factory("Task", [
     return $resource("/lists/:list_id/tasks/:id", {list_id: "@list_id", id: "@id"}, {update: {method: "PATCH"}})
   }
 ]);
+
+
 
 this.MainCtrl = [
   "$scope", "List", "Task", function($scope, List, Task) {
