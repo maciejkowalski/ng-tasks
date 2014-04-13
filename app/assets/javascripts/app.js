@@ -1,4 +1,4 @@
-var app = angular.module("Masters", ["ngResource"]);
+var app = angular.module("Masters", ["ngResource", 'mk.editablespan']);
 
 app.config([
   "$httpProvider", function($httpProvider) {
