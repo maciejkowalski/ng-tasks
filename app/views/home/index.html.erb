@@ -27,32 +27,37 @@
         </h3>
       </div>
 
-      <div class='col-md-4' style="margin-top: 13px;">
+      <div class='col-md-4 down13p'>
         <button class="btn btn-danger btn-small pull-right" ng-click="deleteList($index)" type="button">
           <span class="glyphicon glyphicon-ban-circle"></span>
         </button>
       </div>
 
+      <form ng-submit='addTaskToList(newTask, list)' class='form-inline'>
+        <div class='form-group'>
+          <input type='text' ng-model="newTask.name" class='form-control' placeholder='Add new Task'>
+        </div>
+        <button type='submit' class='btn btn-default'>Add Task</button>
+      </form>
 
+      <div class="col-md-10" ng-repeat="task in list.tasks">
+        <div class='col-md-10'>
+          <editablespan
+            model='task.name'
+            on-ready='updateTaskInList(task)'
+            input-class="form-control"
+            span-class="font18p"
+            >
+          </editablespan>
+        </div>
 
-      <div class="col-md-8" ng-repeat="task in list.tasks">
-        {{task.name}}
-        <button class="btn btn-danger btn-xs pull-right" ng-click="deleteTaskFromList($index, task, list)" type="button">
-          <span class="glyphicon glyphicon-ban-circle"></span>
-        </button>
-        <br />
-
-        <form ng-submit='updateTaskInList(task)'>
-          <input type='text' ng-model="task.name">
-          <input type='submit' value='Update'>
-        </form>
+        <div class='col-md-2 down13p'>
+          <button class="btn btn-danger btn-xs pull-right" ng-click="deleteTaskFromList($index, task, list)" type="button">
+            <span class="glyphicon glyphicon-ban-circle"></span>
+          </button>
+        </div>
 
       </div>
-
-      <form ng-submit='addTaskToList(newTask, list)'>
-        <input type='text' ng-model="newTask.name">
-        <input type='submit' value='Add'>
-      </form>
     </div>
   </div>
 
