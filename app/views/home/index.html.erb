@@ -16,16 +16,24 @@
 
   <div class="row">
     <div class="col-md-4" ng-repeat="list in lists">
-      <h3 ng-click="clickList()">{{list.name}}</h3>
+      <div class='col-md-8'>
+        <h3>
+          <editablespan
+            model='list.name'
+            on-ready='updateList(list)'
+            input-class="form-control"
+            >
+          </editablespan>
+        </h3>
+      </div>
 
-      <button class="btn btn-danger btn-small pull-right" ng-click="deleteList($index)" type="button">
-        <span class="glyphicon glyphicon-ban-circle"></span>
-      </button>
+      <div class='col-md-4' style="margin-top: 13px;">
+        <button class="btn btn-danger btn-small pull-right" ng-click="deleteList($index)" type="button">
+          <span class="glyphicon glyphicon-ban-circle"></span>
+        </button>
+      </div>
 
-      <form ng-submit='updateList(list)'>
-        <input type='text' ng-model="list.name">
-        <input type='submit' value='Update' class="btn btn-default">
-      </form>
+
 
       <div class="col-md-8" ng-repeat="task in list.tasks">
         {{task.name}}
