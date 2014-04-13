@@ -1,7 +1,7 @@
 Masters::Application.routes.draw do
 
   authenticated :user do
-    root to: "home#index"
+    root to: "home#index", as: :user_home
   end
 
   resources :lists do
@@ -12,11 +12,9 @@ Masters::Application.routes.draw do
   as :user do
     match 'sign_in' => "devise/sessions#new", as: :sign_in, via: [:get, :post]
     unauthenticated do
-      root to: "devise/sessions#new"
+      root to: "devise/sessions#new", as: :guest_home
     end
   end
-
- 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
