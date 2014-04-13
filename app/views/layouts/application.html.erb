@@ -23,6 +23,9 @@
           <div class='centre'>
             <a class="navbar-brand" href="#">ng-tasks</a>
           </div>
+          <div>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "navbar-brand") %>
+          </div>
         </div>
 
       </div>
