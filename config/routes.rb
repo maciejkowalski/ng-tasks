@@ -1,5 +1,13 @@
 Masters::Application.routes.draw do
 
+  authenticated :user do
+    root to: "home#index"
+  end
+
+  resources :lists do
+    resources :tasks
+  end
+
   devise_for :users
   as :user do
     match 'sign_in' => "devise/sessions#new", as: :sign_in, via: [:get, :post]
@@ -8,13 +16,7 @@ Masters::Application.routes.draw do
     end
   end
 
-  authenticated :user do
-    root to: "home#index"
-  end
-
-  resources :lists do
-    resources :tasks
-  end
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
