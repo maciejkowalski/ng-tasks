@@ -7,13 +7,21 @@ app.config([
   }
 ]);
 
-app.config(function($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
-  $routeProvider.when("/", {
-    controller: "MainCtrl"
-  });
-
-});
+app.config(["$routeProvider", "$locationProvider",
+  function($routeProvider, $locationProvider) {
+    $routeProvider.when("/", {
+      redirectTo: '/dashboard',
+    });
+    $routeProvider.when("/dashboard", {
+      templateUrl: "/main.html",
+      controller: "MainCtrl"
+    });
+    $routeProvider.when('/#profile', {
+      templateUrl: "/profile.html",
+      controller: "ProfileCtrl"
+    });
+  }
+]);
 
 app.factory("List", [
   "$resource", function($resource) {
@@ -27,6 +35,9 @@ app.factory("Task", [
   }
 ]);
 
+this.ProfileCtrl = function() {
+  console.log("it works!")
+}
 
 
 this.MainCtrl = [
