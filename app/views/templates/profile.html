@@ -1,32 +1,32 @@
 <h3>Edycja profilu</h3>
 
-<form class="form-horizontal" role="form">
+<form ng-submit="updateProfile()" class="form-horizontal" role="form">
 
   <div class="form-group">
     <label for="first_name" class="col-sm-2 control-label">First name</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="first_name" placeholder="First name">
+      <input type="text" ng-model='user.firstName' class="form-control" id="first_name" placeholder="First name">
     </div>
   </div>
 
   <div class="form-group">
     <label for="last_name" class="col-sm-2 control-label">Last name</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="last_name" placeholder="Last name">
+      <input type="text" ng-model='user.lastName' class="form-control" id="last_name" placeholder="Last name">
     </div>
   </div>
 
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <label for="email" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-4">
-      <input type="email" class="form-control" id="email" placeholder="Email">
+      <input type="email" ng-model='user.email' class="form-control" id="email" placeholder="Email">
     </div>
   </div>
 
   <div class="form-group">
     <label for="image_url" class="col-sm-2 control-label">Avatar URL</label>
     <div class="col-sm-4">
-      <input type="text" class="form-control" id="image_url" placeholder="Adres URL obrazka">
+      <input type="text" ng-model='user.imageURL' class="form-control" id="image_url" placeholder="Adres URL obrazka">
     </div>
   </div>
 
@@ -40,26 +40,26 @@
 <br />
 <hr />
 
-<form class="form-horizontal" role="form">
+<form ng-submit='updatePass()' class="form-horizontal" role="form">
 
   <div class="form-group">
     <label for="current_password" class="col-sm-2 control-label">Obecne hasło:</label>
     <div class="col-sm-4">
-      <input type="password" class="form-control" id="current_password" placeholder="Obecne hasło">
+      <input type="password" ng-model='user.currentPassword' class="form-control" id="current_password" placeholder="Obecne hasło">
     </div>
   </div>
 
   <div class="form-group">
     <label for="password" class="col-sm-2 control-label">Nowe hasło</label>
     <div class="col-sm-4">
-      <input type="password" class="form-control" id="password" placeholder="Nowe Hasło">
+      <input type="password" ng-model='user.password' class="form-control" id="password" placeholder="Nowe Hasło">
     </div>
   </div>
 
   <div class="form-group">
     <label for="password_confirmation" class="col-sm-2 control-label">Powtórz nowe hasło</label>
     <div class="col-sm-4">
-      <input type="password" class="form-control" id="password_confirmation" placeholder="Powtórz nowe hasło">
+      <input type="password" ng-model='user.passwordConfirmation' class="form-control" id="password_confirmation" placeholder="Powtórz nowe hasło">
     </div>
   </div>
 
