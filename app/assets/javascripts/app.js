@@ -16,7 +16,7 @@ app.config(["$routeProvider", "$locationProvider",
       templateUrl: "/main.html",
       controller: "MainCtrl"
     });
-    $routeProvider.when('/#profile', {
+    $routeProvider.when('/profile', {
       templateUrl: "/profile.html",
       controller: "ProfileCtrl"
     });
