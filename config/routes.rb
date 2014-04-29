@@ -8,7 +8,7 @@ Masters::Application.routes.draw do
     resources :tasks
   end
 
-  devise_for :users
+  devise_for :users, controllers: {registrations: 'registrations'}
   as :user do
     match 'sign_in' => "devise/sessions#new", as: :sign_in, via: [:get, :post]
     unauthenticated do
