@@ -17,6 +17,14 @@ this.ProfileCtrl = function($scope, $http, CurrentUser) {
   }
 
   $scope.updatePass = function() {
+    $http({
+      method: "PUT",
+      url: "/users",
+      data: {
+        password: $scope.user.password,
+        password_confirmation: $scope.user.passwordConfirmation
+      }
+    })
     console.log("$scope", $scope.user)
   }
 }
