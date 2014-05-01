@@ -4,12 +4,14 @@ Masters::Application.routes.draw do
     root to: "home#index", as: :user_home
   end
 
+
   resources :lists do
     resources :tasks
   end
 
   devise_for :users, controllers: {registrations: 'registrations'}
   as :user do
+    get 'users/user' => "registrations#user", as: :current_user
     match 'sign_in' => "devise/sessions#new", as: :sign_in, via: [:get, :post]
     unauthenticated do
       root to: "devise/sessions#new", as: :guest_home

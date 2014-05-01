@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  def user
+    render json: current_user
+  end
+
   def update
     # required for settings form to submit when password is left blank
     if user_params[:password].blank?
@@ -19,6 +23,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params
-    params.require(:registration).permit(:first_name, :last_name)
+    params.require(:registration).permit(:first_name, :last_name, :email, :avatar)
   end
 end
