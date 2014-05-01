@@ -35,3 +35,8 @@ app.factory("Task", [
   }
 ]);
 
+app.factory("CurrentUser", [
+  "$resource", function($resource) {
+    return $resource('/users/user')
+  }
+]);
