@@ -7,10 +7,10 @@ this.ProfileCtrl = function($scope, $http, CurrentUser) {
       method: "PUT",
       url: "/users",
       data: {
-        first_name: $scope.user.firstName,
-        last_name: $scope.user.lastName,
+        first_name: $scope.user.first_name,
+        last_name: $scope.user.last_name,
         email: $scope.user.email,
-        avatar: $scope.user.imageURL
+        avatar: $scope.user.avatar
       }
     })
     console.log("$scope", $scope.user)
