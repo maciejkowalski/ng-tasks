@@ -1,5 +1,4 @@
 this.ProfileCtrl = function($scope, $http, CurrentUser) {
-
   $scope.user = CurrentUser.get()
 
   $scope.updateProfile = function() {
@@ -13,7 +12,6 @@ this.ProfileCtrl = function($scope, $http, CurrentUser) {
         avatar: $scope.user.avatar
       }
     })
-    console.log("$scope", $scope.user)
   }
 
   $scope.updatePass = function() {
@@ -25,6 +23,5 @@ this.ProfileCtrl = function($scope, $http, CurrentUser) {
         password_confirmation: $scope.user.passwordConfirmation
       }
     })
-    console.log("$scope", $scope.user)
   }
 }
