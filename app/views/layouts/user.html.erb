@@ -20,11 +20,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <div>
+          <div ng-controller='NavbarCtrl'>
             <a class='navbar-brand'>
-              <img src='<%= current_user.avatar %>' height='25' width='25'>
-              <%= current_user.first_name %>
-              <%= current_user.last_name%>
+              <img src={{user.avatar}} height='25' width='25'>
+              {{user.first_name}}
+              {{user.last_name}}
             </a>
           </div>
           <div class='centre'>
