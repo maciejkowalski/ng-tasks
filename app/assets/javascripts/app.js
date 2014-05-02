@@ -40,3 +40,4 @@ app.factory("CurrentUser", [
     return $resource('/users/user')
   }
 ]);
+

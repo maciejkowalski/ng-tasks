@@ -1,3 +1,3 @@
 this.NavbarCtrl = function($scope, $http, CurrentUser) {
-  $scope.user = CurrentUser.get()
+  $scope.user = app.CurrentUser = CurrentUser.get();
 }

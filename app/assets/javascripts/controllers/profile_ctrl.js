@@ -1,5 +1,5 @@
 this.ProfileCtrl = function($scope, $http, CurrentUser) {
-  $scope.user = CurrentUser.get()
+  $scope.user = app.CurrentUser;
 
   $scope.updateProfile = function() {
     $http({
