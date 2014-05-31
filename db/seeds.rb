@@ -10,3 +10,7 @@ List.find_or_create_by(name: "Current")
 List.find_or_create_by(name: "Backlog")
 List.find_or_create_by(name: "Icebox")
 
+if user = User.find_or_initialize_by(email: "mkoval33@gmail.com")
+  user.password = 'password'
+  user.save
+end
