@@ -10,11 +10,15 @@ app.config([
 app.config(["$routeProvider", "$locationProvider",
   function($routeProvider, $locationProvider) {
     $routeProvider.when("/", {
-      redirectTo: '/dashboard',
+      redirectTo: '/dashboard'
     });
     $routeProvider.when("/dashboard", {
       templateUrl: "/main.html",
       controller: "MainCtrl"
+    });
+    $routeProvider.when("/:list_id/task/:id", {
+      templateUrl: "/task.html",
+      controller: "TasksCtrl"
     });
     $routeProvider.when('/profile', {
       templateUrl: "/profile.html",
