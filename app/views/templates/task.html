@@ -1,0 +1,22 @@
+<div>
+    <div class='col-md-6'>
+        <h3>task template</h3>
+        <hr />
+        <h3>
+            <editablespan
+                    model='task.name'
+                    on-ready='updateTask(task)'
+                    input-class="form-control"
+                    >
+            </editablespan>
+        </h3>
+
+        <h3>
+            <div contenteditable="true" contenteditable-model-value="text"
+                 ng-model="task.description" class="form-control"
+                 ng-class="{'has-warning': !task.description}"
+                 ng-change="onchange()">
+            </div>
+        </h3>
+    </div>
+</div>

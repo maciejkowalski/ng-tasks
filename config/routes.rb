@@ -20,6 +20,7 @@ Masters::Application.routes.draw do
 
   get 'profile' => "templates#profile"
   get 'main' => "templates#main"
+  get 'task' => "templates#task"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

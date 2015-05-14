@@ -1,9 +1,12 @@
 class TemplatesController < ApplicationController
+  layout false
+
   def main
-    render layout: false
   end
 
   def profile
-    render layout: false
+  end
+
+  def task
   end
 end
