@@ -5,11 +5,10 @@ this.TasksCtrl = [
             list_id: $routeParams.list_id
         }, function (task) { });
 
-        console.log("scope $task", $scope.task);
 
-        $scope.updateTask = function(task) {
-            console.log('task data', task)
-            //Task.update({id: $routeParam.id, list_id: $routeParams.list_id, task: {}});
+        $scope.updateTask = function() {
+            console.log("updateTask $scope.task", $scope.task)
+            Task.update($scope.task)
         };
     }
 ];
