@@ -1,4 +1,8 @@
-var app = angular.module("Masters", ["ngResource", 'ngRoute', 'mk.editablespan']);
+var app = angular.module("Masters", ["ngResource", 'ngRoute', 'mk.editablespan', 'xeditable']);
+
+app.run(function(editableOptions) {
+    editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
+});
 
 app.config([
   "$httpProvider", function($httpProvider) {
