@@ -50,6 +50,7 @@ db/*.sqlite3
 /specifications
 rerun.txt
 pickle-email-*.html
+out/
 
 # uploads
 /public/uploads
