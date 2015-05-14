@@ -12,11 +12,9 @@
         </h3>
 
         <h3>
-            <div contenteditable="true" contenteditable-model-value="text"
-                 ng-model="task.description" class="form-control"
-                 ng-class="{'has-warning': !task.description}"
-                 ng-change="onchange()">
-            </div>
+            <a href="#" editable-textarea="task.description" e-rows="7" e-cols="63">
+                <pre>{{ task.description || 'no description' }}</pre>
+            </a>
         </h3>
     </div>
 </div>
