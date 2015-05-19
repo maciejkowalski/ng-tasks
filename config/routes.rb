@@ -8,6 +8,7 @@ Masters::Application.routes.draw do
   resources :lists do
     resources :tasks
   end
+  resources :comments
 
   devise_for :users, controllers: {registrations: 'registrations'}
   as :user do
