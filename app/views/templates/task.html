@@ -4,7 +4,7 @@
         <a href="#" > Wróć do Tablicy</a>
         </h4>
     </div>
-    <div class='col-md-6'>
+    <div class='col-md-8'>
         <h3>
             Tytuł: <div  editable-text="task.name" onaftersave="updateTask()">{{ task.name || 'empty' }}</div>
 
@@ -16,5 +16,37 @@
                 <pre>{{ task.description || 'no description' }}</pre>
             </a>
         </h3>
+
+    </div>
+    <div class='col-md-12'>
+        <hr />
+    </div>
+
+
+
+    <div ng-repeat="comment in task.comments">
+      <div class='col-md-8'>
+          <img src="{{comment.user_avatar}}" height='25' width='25' style='margin-right: 5px'>
+              {{comment.user_name}} ({{comment.user_email}})
+          </img>
+          <div style="margin-top: 10px; margin-left: 10px; margin-bottom: 15px;">
+              <p>
+                  {{comment.content}}
+              </p>
+              <p>
+                  {{comment.created_at}}
+              </p>
+          </div>
+      </div>
+    </div>
+
+        <!--
+        <form ng-submit='addTaskToList(newTask, list)' class='form-inline padding7p'>
+            <div class='form-group'>
+                <input type='text' ng-model="newTask.name" class='form-control' placeholder='Add new Task'>
+            </div>
+            <button type='submit' class='btn btn-default'>Add Task</button>
+        </form>
+        -->
     </div>
 </div>
