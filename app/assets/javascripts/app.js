@@ -49,3 +49,8 @@ app.factory("CurrentUser", [
   }
 ]);
 
+app.factory("Comment", [
+    "$resource", function($resource) {
+        return $resource('/comments/:id', {id: "@id"}, {update: {method: "PATCH"}})
+    }
+]);
