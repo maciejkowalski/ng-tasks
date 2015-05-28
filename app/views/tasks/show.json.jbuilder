@@ -7,6 +7,6 @@ json.comments @task.comments do |comment|
     json.user_name "#{comment.user.first_name} #{comment.user.last_name}"
     json.user_id comment.user_id
     json.user_avatar comment.user.avatar
-    json.created_at comment.created_at.strftime("Commented at: %Y/%m/%d %H:%M")
+    json.created_at comment.created_at.strftime("%Y/%m/%d %H:%M")
 
 end
