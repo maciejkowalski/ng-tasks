@@ -19,6 +19,7 @@ this.TasksCtrl = [
             var comment = Comment.save(newComment);
 
             $scope.task.comments.push(comment);
+            return $scope.newComment = {};
         }
     }
 ];
