@@ -6,11 +6,11 @@ class CommentsController < ApplicationController
   end
 
   def show
-    respond_with Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def create
-    respond_with Comment.create(comment_params)
+    @comment = Comment.create(comment_params)
   end
 
   def update
@@ -24,6 +24,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:list).permit(:content, :task_id, :user_id)
+    params.require(:comment).permit(:content, :task_id, :user_id)
   end
 end
