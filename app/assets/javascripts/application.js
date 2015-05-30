@@ -17,4 +17,5 @@
 //= require angular-route
 //= require turbolinks
 //= require bootstrap
+//= require angularjs-file-upload
 //= require_tree .
