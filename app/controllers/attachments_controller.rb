@@ -10,7 +10,10 @@ class AttachmentsController < ApplicationController
   end
 
   def create
-    respond_with Attachment.create(attachment_params)
+    attachment = Attachment.new(attachment_params)
+    attachment.attachment = params[:file]
+    attachment.save!
+    respond_with attachment
   end
 
   def update
@@ -24,6 +27,6 @@ class AttachmentsController < ApplicationController
   private
 
   def attachment_params
-    params.require(:comment).permit(:attachment, :task_id, :user_id)
+    params.permit(:task_id, :user_id)
   end
 end
