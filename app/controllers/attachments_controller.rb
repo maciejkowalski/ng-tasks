@@ -6,14 +6,13 @@ class AttachmentsController < ApplicationController
   end
 
   def show
-    respond_with Attachment.find(params[:id])
+    @attachment = Attachment.find(params[:id])
   end
 
   def create
-    attachment = Attachment.new(attachment_params)
-    attachment.attachment = params[:file]
-    attachment.save!
-    respond_with attachment
+    @attachment = Attachment.new(attachment_params)
+    @attachment.attachment = params[:file]
+    @attachment.save!
   end
 
   def update
