@@ -19,9 +19,22 @@
 
         <input type="file" nv-file-select uploader="uploader" /><br/>
 
-        <div ng-repeat="file in task.files">
+        <div class='col-md-8'>
+           <i class="fa fa-file fa-lg"></i>
+          <b>Załączniki</b>
+        </div>
+        <div ng-repeat="file in task.attachments">
             <div class='col-md-8'>
-                {{file.file_name}}
+                <div class='col-md-8'>
+                    {{file.file_name}}
+                </div>
+                <a href='{{file.url}}' target='_blank'>
+                    <i class="fa fa-download"></i> Ściągnij
+                </a>
+                &nbsp;
+                <span ng-confirm-click='click?' ng-click="destroyAttachment(file)" class='clickable'>
+                    <i class="fa fa-times"></i>Usuń
+                </span>
             </div>
         </div>
 
