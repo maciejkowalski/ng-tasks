@@ -1,5 +1,6 @@
 this.TasksCtrl = [
-    "$scope", "$routeParams", "Task", "Comment", "FileUploader", function($scope, $routeParams, Task, Comment, FileUploader) {
+    "$scope", "$routeParams", "Task", "Comment", "Attachment", "FileUploader",
+      function($scope, $routeParams, Task, Comment, Attachment, FileUploader) {
         var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         $scope.uploader = new FileUploader({
@@ -10,12 +11,14 @@ this.TasksCtrl = [
             },
             removeAfterUpload: true
         });
-        $scope.task = Task.get({
-            id: $routeParams.id,
-            list_id: $routeParams.list_id
-        }, function (task) {
-            task.files = [];
-        });
+          var update = function () {
+              $scope.task = Task.get({
+                  id: $routeParams.id,
+                  list_id: $routeParams.list_id
+              }, function (task) {
+              });
+          };
+          update();
         console.log('$scope.uploader', $scope.uploader);
 
         $scope.uploader.onBeforeUploadItem = function(item) {
@@ -43,6 +46,11 @@ this.TasksCtrl = [
 
             $scope.task.comments.push(comment);
             return $scope.newComment = {};
-        }
+        };
+
+        $scope.destroyAttachment = function (file) {
+                Attachment.delete({id: file.id});
+                update();
+        };
     }
 ];
