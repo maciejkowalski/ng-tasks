@@ -1,4 +1,13 @@
-var app = angular.module("Masters", ["ngResource", 'ngRoute', 'mk.editablespan', 'xeditable', 'angularFileUpload']);
+var app = angular.module("Masters",
+    ["ngResource",
+     'ngRoute',
+     'mk.editablespan',
+     'xeditable',
+     'angularFileUpload',
+     'ui.bootstrap.datetimepicker'
+    ]);
+
+var myAppModule = angular.module('MyApp', [])
 
 app.run(function(editableOptions) {
     editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
