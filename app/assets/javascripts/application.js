@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment
 //= require angular
 //= require angular-resource
 //= require angular-route
@@ -19,3 +20,4 @@
 //= require bootstrap
 //= require angularjs-file-upload
 //= require_tree .
+moment.locale('pl');
