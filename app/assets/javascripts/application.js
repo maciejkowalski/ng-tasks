@@ -16,6 +16,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-route
+//= require datetimepicker
 //= require turbolinks
 //= require bootstrap
 //= require angularjs-file-upload

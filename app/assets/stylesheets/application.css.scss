@@ -10,11 +10,13 @@
  *
  *= require_self
  *= require font-awesome
+ *= require datetimepicker
  *= require_tree .
  */
 
 @import 'bootstrap';
 @import 'bootstrap/theme';
+@import 'bootstrap/glyphicons';
 @import 'font-awesome';
 
 
