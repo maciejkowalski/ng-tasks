@@ -44,6 +44,7 @@ gem 'devise'
 
 gem 'angularjs-file-upload-rails', '~> 1.1.6'
 gem 'carrierwave'
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
