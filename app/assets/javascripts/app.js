@@ -31,6 +31,25 @@ app.config(["$routeProvider", "$locationProvider",
   }
 ]);
 
+// /app/directives.js
+app.directive('ngConfirmClick', [
+    function(){
+        return {
+            priority: -1,
+            restrict: 'A',
+            link: function(scope, element, attrs){
+                element.bind('click', function(e){
+                    var message = attrs.ngConfirmClick;
+                    if(message && !confirm(message)){
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }
+                });
+            }
+        }
+    }
+]);
+
 app.factory("List", [
   "$resource", function($resource) {
     return $resource("lists/:id", {id: "@id"}, {update: {method: "PATCH"}});
