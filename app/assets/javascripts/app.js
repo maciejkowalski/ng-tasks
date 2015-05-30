@@ -54,3 +54,9 @@ app.factory("Comment", [
         return $resource('/comments/:id', {id: "@id"}, {update: {method: "PATCH"}})
     }
 ]);
+
+app.factory("Attachment", [
+    "$resource", function($resource) {
+        return $resource('/attachments/:id', {id: "@id"}, {update: {method: "PATCH"}})
+    }
+]);
