@@ -24,7 +24,7 @@ this.TasksCtrl = [
         };
 
         $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
-            $scope.task.files.push(response);
+            $scope.task.attachments.push(response);
             console.log(fileItem, response, status, headers);
         };
 
