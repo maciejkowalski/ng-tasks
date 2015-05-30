@@ -3,17 +3,23 @@ this.TasksCtrl = [
         var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         $scope.uploader = new FileUploader({
-            url: "/upload",
+            url: "/attachments",
             autoUpload: true,
             headers : {
                 'X-CSRF-TOKEN': csrf_token // X-CSRF-TOKEN is used for Ruby on Rails Tokens
-            }
+            },
+            removeAfterUpload: true
         });
         $scope.task = Task.get({
             id: $routeParams.id,
             list_id: $routeParams.list_id
         }, function (task) { });
         console.log('$scope.uploader', $scope.uploader);
+
+        $scope.uploader.onBeforeUploadItem = function(item) {
+            var u = window.CurrentUser;
+            item.formData.push({task_id: $scope.task.id, user_id: u.id})
+        };
 
 
         $scope.updateTask = function() {
