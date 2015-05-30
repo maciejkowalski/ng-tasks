@@ -40,6 +40,28 @@
             </div>
         </div>
 
+        <div class='col-md-12'>
+            <hr />
+        </div>
+
+        <div class='col-md-8'>
+            <h4><i class="fa fa-calendar-o fa-lg"></i> Termin:</h4>
+
+            <div class="dropdown">
+                <a class="dropdown-toggle clickable" id="dropdown2" role="button" data-toggle="dropdown">
+                    <div class="input-group"><input type="text" class="form-control"
+                                                    data-ng-model="data.dateDropDownInput"><span
+                            class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <datetimepicker data-ng-model="data.dateDropDownInput"
+                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+                </ul>
+            </div>
+
+        </div>
+
     </div>
     <div class='col-md-12'>
         <hr />
