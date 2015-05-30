@@ -1,8 +1,13 @@
 this.TasksCtrl = [
     "$scope", "$routeParams", "Task", "Comment", "FileUploader", function($scope, $routeParams, Task, Comment, FileUploader) {
+        var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
         $scope.uploader = new FileUploader({
             url: "/upload",
-            autoUpload: true
+            autoUpload: true,
+            headers : {
+                'X-CSRF-TOKEN': csrf_token // X-CSRF-TOKEN is used for Ruby on Rails Tokens
+            }
         });
         $scope.task = Task.get({
             id: $routeParams.id,
