@@ -9,4 +9,7 @@ json.comments @task.comments do |comment|
     json.user_avatar comment.user.avatar
     json.created_at comment.created_at.strftime("%Y/%m/%d %H:%M")
 
+
 end
+
+json.attachments @task.attachments, partial: 'attachments/attachment', as: :attachment
