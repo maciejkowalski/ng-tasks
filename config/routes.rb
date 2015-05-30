@@ -4,11 +4,11 @@ Masters::Application.routes.draw do
     root to: "home#index", as: :user_home
   end
 
-
   resources :lists do
     resources :tasks
   end
   resources :comments
+  resources :attachments
 
   devise_for :users, controllers: {registrations: 'registrations'}
   as :user do
