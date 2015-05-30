@@ -13,12 +13,19 @@ this.TasksCtrl = [
         $scope.task = Task.get({
             id: $routeParams.id,
             list_id: $routeParams.list_id
-        }, function (task) { });
+        }, function (task) {
+            task.files = [];
+        });
         console.log('$scope.uploader', $scope.uploader);
 
         $scope.uploader.onBeforeUploadItem = function(item) {
             var u = window.CurrentUser;
             item.formData.push({task_id: $scope.task.id, user_id: u.id})
+        };
+
+        $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
+            $scope.task.files.push(response);
+            console.log(fileItem, response, status, headers);
         };
 
 
