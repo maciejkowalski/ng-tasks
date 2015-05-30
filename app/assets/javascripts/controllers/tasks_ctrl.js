@@ -1,43 +1,43 @@
 this.TasksCtrl = [
     "$scope", "$routeParams", "Task", "Comment", "Attachment", "FileUploader",
-      function($scope, $routeParams, Task, Comment, Attachment, FileUploader) {
+    function ($scope, $routeParams, Task, Comment, Attachment, FileUploader) {
         var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         $scope.uploader = new FileUploader({
             url: "/attachments",
             autoUpload: true,
-            headers : {
+            headers: {
                 'X-CSRF-TOKEN': csrf_token // X-CSRF-TOKEN is used for Ruby on Rails Tokens
             },
             removeAfterUpload: true
         });
-          var update = function () {
-              $scope.task = Task.get({
-                  id: $routeParams.id,
-                  list_id: $routeParams.list_id
-              }, function (task) {
-              });
-          };
-          update();
+        var update = function () {
+            $scope.task = Task.get({
+                id: $routeParams.id,
+                list_id: $routeParams.list_id
+            }, function (task) {
+            });
+        };
+        update();
         console.log('$scope.uploader', $scope.uploader);
 
-        $scope.uploader.onBeforeUploadItem = function(item) {
+        $scope.uploader.onBeforeUploadItem = function (item) {
             var u = window.CurrentUser;
             item.formData.push({task_id: $scope.task.id, user_id: u.id})
         };
 
-        $scope.uploader.onCompleteItem = function(fileItem, response, status, headers) {
+        $scope.uploader.onCompleteItem = function (fileItem, response, status, headers) {
             $scope.task.attachments.push(response);
             console.log(fileItem, response, status, headers);
         };
 
 
-        $scope.updateTask = function() {
+        $scope.updateTask = function () {
             console.log("updateTask $scope.task", $scope.task)
             Task.update($scope.task)
         };
 
-        $scope.addCommentToTask = function(newComment, task) {
+        $scope.addCommentToTask = function (newComment, task) {
             var u = window.CurrentUser;
             newComment.task_id = task.id;
             newComment.user_id = u.id;
@@ -49,8 +49,8 @@ this.TasksCtrl = [
         };
 
         $scope.destroyAttachment = function (file) {
-                Attachment.delete({id: file.id});
-                update();
+            Attachment.delete({id: file.id});
+            update();
         };
     }
 ];
