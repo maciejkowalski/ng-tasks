@@ -4,7 +4,8 @@ var app = angular.module("Masters",
      'mk.editablespan',
      'xeditable',
      'angularFileUpload',
-     'ui.bootstrap.datetimepicker'
+     'ui.bootstrap.datetimepicker',
+     'ui.bootstrap'
     ]);
 
 var myAppModule = angular.module('MyApp', [])

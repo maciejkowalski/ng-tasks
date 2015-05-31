@@ -19,6 +19,7 @@
 //= require datetimepicker
 //= require turbolinks
 //= require bootstrap
+//= require ui-bootstrap
 //= require angularjs-file-upload
 //= require_tree .
 moment.locale('pl');
