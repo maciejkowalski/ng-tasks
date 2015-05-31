@@ -65,7 +65,19 @@
 
         </div>
 
+
+
     </div>
+
+    <div class='col-md-8'>
+        <p>Przenieś zadanie: </p>
+
+        <select class='form-control' ng-model='newList' ng-change='listChanged(newList)'
+                ng-options='list.name for list in lists track by list.id'>
+            <option value="">-- wybierz nowa liste --</option>
+        </select>
+    </div>
+
     <div class='col-md-12'>
         <hr />
     </div>

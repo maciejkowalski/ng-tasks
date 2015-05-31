@@ -1,6 +1,6 @@
 this.TasksCtrl = [
-    "$scope", "$routeParams", "Task", "Comment", "Attachment", "FileUploader",
-    function ($scope, $routeParams, Task, Comment, Attachment, FileUploader) {
+    "$scope", "$routeParams", "List", "Task", "Comment", "Attachment", "FileUploader",
+    function ($scope, $routeParams, List, Task, Comment, Attachment, FileUploader) {
         var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         $scope.uploader = new FileUploader({
@@ -22,12 +22,19 @@ this.TasksCtrl = [
             });
         };
         getTask();
+        $scope.lists = List.query();
 
         $scope.onTimeSet = function (newDate, oldDate) {
             console.log(newDate, oldDate);
             $scope.task.due_date = newDate
             Task.update($scope.task)
         };
+
+        $scope.listChanged = function (newList) {
+            console.log('newList', newList);
+            $scope.task.list_id = newList.id;
+            Task.update($scope.task)
+        }
 
         $scope.uploader.onBeforeUploadItem = function (item) {
             var u = window.CurrentUser;
