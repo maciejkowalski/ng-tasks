@@ -20,5 +20,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require angularjs-file-upload
+//= require select
 //= require_tree .
 moment.locale('pl');
