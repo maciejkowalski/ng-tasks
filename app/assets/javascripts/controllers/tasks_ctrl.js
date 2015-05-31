@@ -11,15 +11,14 @@ this.TasksCtrl = [
             },
             removeAfterUpload: true
         });
-        var update = function () {
+        var getTask = function () {
             $scope.task = Task.get({
                 id: $routeParams.id,
                 list_id: $routeParams.list_id
             }, function (task) {
             });
         };
-        update();
-        console.log('$scope.uploader', $scope.uploader);
+        getTask();
 
         $scope.uploader.onBeforeUploadItem = function (item) {
             var u = window.CurrentUser;
@@ -50,7 +49,7 @@ this.TasksCtrl = [
 
         $scope.destroyAttachment = function (file) {
             Attachment.delete({id: file.id});
-            update();
+            getTask();
         };
     }
 ];
