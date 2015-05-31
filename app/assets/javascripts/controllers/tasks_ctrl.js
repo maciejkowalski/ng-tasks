@@ -16,7 +16,9 @@ this.TasksCtrl = [
                 id: $routeParams.id,
                 list_id: $routeParams.list_id
             }, function (task) {
-                task.due_date = moment(task.due_date)
+                if (task.due_date) {
+                  task.due_date = moment(task.due_date);
+                };
             });
         };
         getTask();
