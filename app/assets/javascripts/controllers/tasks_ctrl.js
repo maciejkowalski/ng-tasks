@@ -20,6 +20,12 @@ this.TasksCtrl = [
         };
         getTask();
 
+        $scope.onTimeSet = function (newDate, oldDate) {
+            console.log(newDate, oldDate);
+            $scope.task.due_date = newDate
+            Task.update($scope.task)
+        };
+
         $scope.uploader.onBeforeUploadItem = function (item) {
             var u = window.CurrentUser;
             item.formData.push({task_id: $scope.task.id, user_id: u.id})
