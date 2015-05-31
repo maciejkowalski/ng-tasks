@@ -1,4 +1,4 @@
-json.extract! @task, :id, :name, :description, :list_id, :created_at, :updated_at
+json.extract! @task, :id, :name, :description, :list_id, :created_at, :updated_at, :due_date
 
 json.comments @task.comments do |comment|
     json.content comment.content
