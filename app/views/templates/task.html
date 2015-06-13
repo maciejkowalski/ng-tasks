@@ -4,112 +4,117 @@
         <a href="#" > Wróć do Tablicy</a>
         </h4>
     </div>
-    <div class='col-md-8'>
-        <h3>
-            <i class="fa fa-bars"></i> Nazwa:
-
-            <div editable-text="task.name" onaftersave="updateTask()">{{ task.name || 'empty' }}</div>
-
-        </h3>
-        <hr />
-
-        <h3>
-            <a href="#" editable-textarea="task.description" e-rows="7" e-cols="63" onaftersave="updateTask()">
-                <pre>{{ task.description || 'no description' }}</pre>
-            </a>
-        </h3>
-
-        <input type="file" nv-file-select uploader="uploader" /><br/>
-
-        <div class='col-md-8'>
-
-          <h4><i class="fa fa-file fa-lg"></i> Załączniki</h4>
-        </div>
-        <div ng-repeat="file in task.attachments">
+    <tabset justified="true">
+        <tab heading="Ogolne">
             <div class='col-md-8'>
-                <div class='col-md-8'>
-                    {{file.file_name}}
-                </div>
-                <a href='{{file.url}}' target='_blank'>
-                    <i class="fa fa-download"></i> Ściągnij
-                </a>
-                &nbsp;
-                <span ng-confirm-click='Czy chcesz usunąć ten plik?' ng-click="destroyAttachment(file)" class='clickable'>
-                    <i class="fa fa-times"></i>Usuń
-                </span>
+                <h3>
+                    <i class="fa fa-bars"></i> Nazwa:
+
+                    <div editable-text="task.name" onaftersave="updateTask()">{{ task.name || 'empty' }}</div>
+                </h3>
+                <hr />
+
+                <h3>
+                    <a href="#" editable-textarea="task.description" e-rows="7" e-cols="63" onaftersave="updateTask()">
+                        <pre>{{ task.description || 'no description' }}</pre>
+                    </a>
+                </h3>
             </div>
-        </div>
 
-        <div class='col-md-12'>
-            <hr />
-        </div>
+            <div class='col-md-8' style='margin-bottom: 5px;'>
+                <form ng-submit='addCommentToTask(newComment, task)' class='padding7p'>
+                    <div class='form-group'>
+                        <textarea ng-model="newComment.content" class='form-control' rows='5' placeholder='Dodaj komentarz'>
+                        </textarea>
+                    </div>
+                    <button type='submit' class='btn btn-default'>Dodaj Komentarz</button>
+                </form>
+            </div>
 
-        <div class='col-md-8'>
-            <h4><i class="fa fa-calendar-o fa-lg"></i> Termin:</h4>
+            <div class='col-md-8' style='margin-bottom: 5px;'>
+                <h3>
+                    <i class="fa fa-comments"></i> Komentarze
+                </h3>
+            </div>
+            <div ng-repeat="comment in task.comments">
+                <div class='col-md-8'>
+                    <img src="{{comment.user_avatar}}" height='25' width='25' style='margin-right: 5px'>
+                    {{comment.user_name}} ({{comment.user_email}}) | {{comment.created_at}}
+                    </img>
+                    <div style="margin-top: 10px; margin-left: 10px; margin-bottom: 15px;">
+                        <p>
+                            {{comment.content}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </tab>
 
-            <div class="dropdown">
-                <a class="dropdown-toggle clickable" id="dropdown2" role="button" data-toggle="dropdown">
-                    <div class="input-group">
-                        <input type="text" class="form-control" data-ng-model="task.due_date">
+        <tab heading="Zalaczniki">
+            <input type="file" nv-file-select uploader="uploader" /><br/>
+
+            <div class='col-md-8'>
+                <h4><i class="fa fa-file fa-lg"></i> Załączniki</h4>
+            </div>
+
+            <div ng-repeat="file in task.attachments">
+                <div class='col-md-8'>
+                    <div class='col-md-8'>
+                        {{file.file_name}}
+                    </div>
+                    <a href='{{file.url}}' target='_blank'>
+                        <i class="fa fa-download"></i> Ściągnij
+                    </a>
+                    &nbsp;
+                        <span ng-confirm-click='Czy chcesz usunąć ten plik?' ng-click="destroyAttachment(file)" class='clickable'>
+                            <i class="fa fa-times"></i>Usuń
+                        </span>
+                </div>
+            </div>
+
+            <div class='col-md-12'>
+                <hr />
+            </div>
+        </tab>
+
+        <tab heading="Zmien Termin">
+            <div class='col-md-8'>
+                <h4><i class="fa fa-calendar-o fa-lg"></i> Termin:</h4>
+
+                <div class="dropdown">
+                    <a class="dropdown-toggle clickable" id="dropdown2" role="button" data-toggle="dropdown">
+                        <div class="input-group">
+                            <input type="text" class="form-control" data-ng-model="task.due_date">
                         <span class="input-group-addon">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </span>
-                    </div>
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                    <datetimepicker data-ng-model="task.due_date"
-                                    data-on-set-time="onTimeSet(newDate, oldDate)"
-                                    data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
-                </ul>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <datetimepicker data-ng-model="task.due_date"
+                                        data-on-set-time="onTimeSet(newDate, oldDate)"
+                                        data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+                    </ul>
+                </div>
+
+            </div>
+        </tab>
+
+        <tab heading="Przenies zadanie">
+            <div class='col-md-8'>
+                <p>Przenieś zadanie: </p>
+
+                <select class='form-control' ng-model='newList' ng-change='listChanged(newList)'
+                        ng-options='list.name for list in lists track by list.id'>
+                    <option value="">-- wybierz nowa liste --</option>
+                </select>
+            </div>
+            <div class='col-md-12'>
+                <hr />
             </div>
 
-        </div>
+        </tab>
 
 
-
-    </div>
-
-    <div class='col-md-8'>
-        <p>Przenieś zadanie: </p>
-
-        <select class='form-control' ng-model='newList' ng-change='listChanged(newList)'
-                ng-options='list.name for list in lists track by list.id'>
-            <option value="">-- wybierz nowa liste --</option>
-        </select>
-    </div>
-
-    <div class='col-md-12'>
-        <hr />
-    </div>
-
-    <div class='col-md-8' style='margin-bottom: 5px;'>
-        <form ng-submit='addCommentToTask(newComment, task)' class='padding7p'>
-            <div class='form-group'>
-                <textarea ng-model="newComment.content" class='form-control' rows='5' placeholder='Dodaj komentarz'>
-                </textarea>
-            </div>
-            <button type='submit' class='btn btn-default'>Dodaj Komentarz</button>
-        </form>
-    </div>
-
-    <div class='col-md-8' style='margin-bottom: 5px;'>
-        <h3>
-        <i class="fa fa-comments"></i> Komentarze
-        </h3>
-    </div>
-    <div ng-repeat="comment in task.comments">
-      <div class='col-md-8'>
-          <img src="{{comment.user_avatar}}" height='25' width='25' style='margin-right: 5px'>
-              {{comment.user_name}} ({{comment.user_email}}) | {{comment.created_at}}
-          </img>
-          <div style="margin-top: 10px; margin-left: 10px; margin-bottom: 15px;">
-              <p>
-                  {{comment.content}}
-              </p>
-          </div>
-      </div>
-    </div>
-
-
-    </div>
+    </tabset>
 </div>
